@@ -1,3 +1,10 @@
+--------------------------------------------------------------------------------
+-- Sql Command File For Creating And Populating The Property-
+-- System Database.
+-- Written By: Ryan Tsihugwa                                               
+-- November 2022                                                  
+-------------------------------------------------------------------------------
+
 /* Car rental database */
 
 /* Under each comment modify and/or add the relevant code - DO NOT REMOVE THE COMMENTS */
