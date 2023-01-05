@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------
--- Sql Command File For Creating And Populating The Property-
+-- Sql Command File For Creating And Populating Car Rental-
 -- System Database.
 -- Written By: Ryan Tsihugwa                                               
 -- November 2022                                                  
