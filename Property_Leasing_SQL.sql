@@ -1,14 +1,11 @@
 --------------------------------------------------------------------------------
 --
 -- Sql Command File For Creating And Populating The Property-
--- System Database.-  For use with UNIT 1 - SQL Guide version 1
---
+-- System Database.
 -- Written By: Sue Stirk                                                 -
 -- Jan 2002
--- Updated By: R L Warrender
--- July 2015 
--- Amended By : D Nelson
--- February 2020                                                              -
+-- Amended By : Ryan Tsihugwa
+-- September 2022                                                         -
 -------------------------------------------------------------------------------
 DROP TABLE lease CASCADE CONSTRAINTS;
 
