@@ -2,10 +2,10 @@
 --
 -- Sql Command File For Creating And Populating The Property-
 -- System Database.
--- Written By: Sue Stirk                                                 -
+-- Written By: Sue Stirk                                                 
 -- Jan 2002
 -- Amended By : Ryan Tsihugwa
--- September 2022                                                         -
+-- September 2022                                                         
 -------------------------------------------------------------------------------
 DROP TABLE lease CASCADE CONSTRAINTS;
 
