@@ -1,3 +1,9 @@
+--------------------------------------------------------------------------------
+-- Sql Command File For Creating And Populating The Property-
+-- System Database.
+-- Written By: Ryan Tsihugwa                                               
+-- December 2022                                                  
+-------------------------------------------------------------------------------
 --declare serveroutput
 SET SERVEROUTPUT ON;
 --drop tables and sequence
