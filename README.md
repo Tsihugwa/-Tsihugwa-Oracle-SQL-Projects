@@ -1,2 +1,2 @@
 # -Tsihugwa-Oracle-SQL-Projects
-Oracle SQL Queries and Procedures
+Oracle SQL Car Rental.sql : SQL queries for creation of car rentals database system Oracle SQL
