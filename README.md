@@ -1,2 +1,2 @@
 # -Tsihugwa-Oracle-SQL-Projects
-Oracle SQL Car Rental.sql : SQL queries for creation of car rentals database system Oracle SQL
+There are different branches in this repository coontaining different SQL files
