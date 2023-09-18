@@ -1,3 +1,11 @@
+Car-Rental-SQL
+--------------------------------------------------------------------------------
+-- Sql Command File For Creating And Populating Car Rental-
+-- System Database.
+-- Written By: Ryan Tsihugwa                                               
+-- November 2022                                                  
+-------------------------------------------------------------------------------
+
 /* Car rental database */
 
 /* Under each comment modify and/or add the relevant code - DO NOT REMOVE THE COMMENTS */
@@ -6,7 +14,8 @@
 
 /* Also remember to change every table name to precede it with your user-id */
 
-
+Car-Rental-SQL
+/*QUESTION 1*/
 
 /*DROP VIEW service_overview CASCADE CONSTRAINTS;*//*REMOVED BECAUSE THERES NO service_overview created*/
 DROP VIEW bh98kj_service_overdue CASCADE CONSTRAINTS;
@@ -195,25 +204,37 @@ VALUES (50008,	10010,	'21-MAR-22', '14-APR-22', 3, 'JAM POT', 14645, 14700, 2340
 
 /* DO NOT DELETE THE COMMENTS */
 
+Car-Rental-SQL
+/* Task 3 - Question 1 */
+
 /* Amend the SQL query below to produce the following result.  List the surname, forename, street, county and postcode of all customers who do not live in Sunderland */
 select cust_surname, cust_forename, cust_street ,cust_county , cust_pcode
 FROM bh98kj_customer 
 WHERE cust_town <> 'Sunderland';  /*CAPITALIZED THE FIRST LETTER IN SUNDERLAND AND ADDED THE MISSING ROWS*/
 
+Car-Rental-SQL
+/* Task 3 - Question 2 */
 /* For each booking, display the booking number, customer number, start date, hire period, car registration number, model name and model description. Order the list by model description in ascending order and then hire period in descending order. */
+
 SELECT booking_no, bh98kj_booking.cust_no, start_date, bh98kj_booking.hire_period, bh98kj_car.reg_no, bh98kj_car_model.model_name, bh98kj_car_model.description
 from bh98kj_booking, bh98kj_car, bh98kj_car_model
 where bh98kj_car.reg_no = bh98kj_booking.reg_no
 AND bh98kj_car_model.model_name = bh98kj_car.model_name
 ORDER BY bh98kj_car_model.description ASC,bh98kj_booking.hire_period DESC ;
 
+Car-Rental-SQL
+/* Task 3 - Question 3 */
+
 /* For each car, display the registration number, and the overall cost for car hire.  Calculate this using the number of days of each hire period and the rate per day for the car.  Name this column overall_cost.   */
+
 SELECT bh98kj_car.reg_no as reg_no, bh98kj_booking.hire_period*bh98kj_car_group.rate_per_day AS overall_cost
 from bh98kj_car, bh98kj_booking, bh98kj_car_group,bh98kj_car_model
 where bh98kj_car_model.model_name = bh98kj_car.model_name
 AND bh98kj_car.reg_no = bh98kj_booking.reg_no
 AND bh98kj_car_model.car_group_name = bh98kj_car_group.car_group_name;
 
+Car-Rental-SQL
+/* Task 3 - Question 4 */
 /*For each booking, display: 
 •	the booking number and customer number 
 •	the customer’s initial and surname in this order, separated by a comma and space, and a full stop after the initial, e.g., J. Brown, and call the column FULLNAME 
@@ -223,12 +244,17 @@ AND bh98kj_car_model.car_group_name = bh98kj_car_group.car_group_name;
 END_DATE. 
 
  */
+
 SELECT booking_no, bh98kj_customer.cust_no, SUBSTR(cust_forename,1,1) ||'. '|| cust_surname  AS fullname,
 coalesce(cust_phoneno, '------------') AS tel, start_date AS start_dat, start_date+ hire_period AS end_date
 from bh98kj_booking, bh98kj_customer 
 where bh98kj_booking.cust_no = bh98kj_customer.cust_no;
 
+Car-Rental-SQL
+/* Task 3 - Question 5 */
+
 /* Create a view named service_overdue which contains for each car their registration number, current mileage, model name, model description, maintenance interval and the number of miles since their last service (call this column overdue).  Only include cars in the view where the number of miles since their last service is greater than their maintenance interval.  */
+
 CREATE VIEW bh98kj_service_overdue AS
 select reg_no, miles_to_date, bh98kj_car.model_name as model_na,
 description, maint_int, miles_last_service AS overdue
@@ -236,11 +262,17 @@ from bh98kj_car, bh98kj_car_model
 where (bh98kj_car.model_name = bh98kj_car_model.model_name)
 AND  (miles_to_date-miles_last_service)>maint_int;
 
+Car-Rental-SQL
+
+
 --Write the SQL query to display the contents of your view, sorted into descending order of miles since the last service. --
 select reg_no, miles_to_date,  model_na,
 description, maint_int, overdue
 from bh98kj_service_overdue
 ORDER BY overdue DESC;
+
+Car-Rental-SQL
+/* Task 3 - Question 6 */
 
 /*List the registration number and number of bookings for each car which has a current mileage less than the average current mileage for cars whose service is currently overdue. */
 select bh98kj_booking.reg_no as reg_no, count(bh98kj_booking.reg_no) as no_of_bookings
@@ -250,16 +282,26 @@ and bh98kj_booking.reg_no = bh98kj_car.reg_no
 and bh98kj_service_overdue.reg_no = bh98kj_booking.reg_no
 group by bh98kj_booking.reg_no ;
 
+Car-Rental-SQL
+/* Task 3 - Question 7 */
+ALTER TABLE bh98kj_customer
+MODIFY cust_surname VARCHAR2(30);
+
 /* a)	Using the SQL ALTER statement, modify the surname column of the customer table to be 30 characters.  */
 ALTER TABLE bh98kj_customer
 MODIFY cust_surname VARCHAR2(30);
 
 --b)	Using the SQL ALTER statement, modify the town and payment method columns of the customer table so that it enforces the not null constraint on both columns.  To get full marks you should do both modifications in one ALTER statement. --
+
 ALTER TABLE bh98kj_customer 
 MODIFY (cust_town NOT NULL,
 cust_pay_method NOT NULL);
 
+<Car-Rental-SQL
+/* Task 3 - Question 8 */
+
 /* Using the CREATE INDEX statement, create the two required indexes on the customer and booking tables.  You will need to investigate how to use the ALTER TABLE SQL statements yourself to complete these tasks.  Do not ALTER the existing tables.  */
+
 CREATE INDEX person_name
 ON bh98kj_customer(cust_surname, cust_forename );
 
